@@ -1,0 +1,8 @@
+.DS_Store
+.history
+*.log
+!.gitkeep
+
+# jenkins
+jenkins/secrets
+
