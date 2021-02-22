@@ -1,6 +1,9 @@
 #! /bin/bash
 
-MYSQL_CLIENT=$(dirname $0)/mysql/scripts
+DOCKER_HOME=$(dirname $0)/docker
+DOCKER_COMPOSE="docker-compose -f ${DOCKER_HOME}/docker-compose.yml "
+
+MYSQL_CLIENT=${DOCKER_HOME}/mysql/scripts
 PATH=$PATH:$MYSQL_CLIENT
 
 function usage {
@@ -11,10 +14,12 @@ Usage:
   $(basename ${0}) [command] [<options>]
 
 Options:
-  stats|st          Dockerコンテナの状態を表示します。
-  init              Dockerコンテナ・イメージ・jenkins JOBの状態を初期化します。
-  start             jenkinsを起動します。
-  stop              jenkinsを停止します。
+  stats|st                 Dockerコンテナの状態を表示します。
+  init                     Dockerコンテナ・イメージ・生成ファイルの状態を初期化します。
+  start                    すべてのDaemonを起動します。
+  stop                     すべてのDaemonを停止します。
+  mysql login              MySQLデータベースにログインします。
+  mysql export             MySQLデータベースのdumpファイルをエクスポートします。
   --version, -v     バージョンを表示します。
   --help, -h        ヘルプを表示します。
 EOF
@@ -31,16 +36,53 @@ case ${1} in
 
     init)
         # 停止＆削除（コンテナ・イメージ・ボリューム）
-        docker-compose down --rmi all --volumes
-        rm -Rf ./jenkins/jobs/*
-        rm -Rf ./jenkins/secrets/*
+        ${DOCKER_COMPOSE} down --rmi all --volumes
+        rm -Rf ./mysql/data/*
+        rm -Rf ./mysql/logs/*
     ;;
 
     start)
-        docker-compose up -d jenkins
+        ${DOCKER_COMPOSE} up -d
     ;;
+
     stop)
-        docker-compose stop jenkins && docker-compose rm -fv jenkins
+        ${DOCKER_COMPOSE} stop && ${DOCKER_COMPOSE} rm -fv
+    ;;
+
+    jenkins)
+      case ${2} in
+          login)
+              $DOCKER_COMPOSE exec jenkins /bin/bash
+          ;;
+          *)
+              usage
+          ;;
+      esac
+    ;;
+
+    mysql)
+      case ${2} in
+          login)
+              mysql -u root -ppassword -h 127.0.0.1
+          ;;
+          export)
+              mysqldump -u root -ppassword -h 127.0.0.1 -A > ./mysql/init/dump.sql
+          ;;
+          *)
+              usage
+          ;;
+      esac
+    ;;
+
+    web-app)
+      case ${2} in
+          login)
+              $DOCKER_COMPOSE exec --user isystk -w /home/isystk web-app /bin/zsh
+          ;;
+          *)
+              usage
+          ;;
+      esac
     ;;
 
     help|--help|-h)
