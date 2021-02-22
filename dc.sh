@@ -3,9 +3,6 @@
 DOCKER_HOME=$(dirname $0)/docker
 DOCKER_COMPOSE="docker-compose -f ${DOCKER_HOME}/docker-compose.yml "
 
-MYSQL_CLIENT=${DOCKER_HOME}/mysql/scripts
-PATH=$PATH:$MYSQL_CLIENT
-
 function usage {
     cat <<EOF
 $(basename ${0}) is a tool for ...
