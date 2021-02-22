@@ -1,0 +1,14 @@
+Started by user unknown or anonymous
+Running as SYSTEM
+Building in workspace /var/jenkins_home/jobs/sample-batch-exec/workspace
+[workspace] $ /bin/bash /tmp/jenkins6016259230984698362.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    42    0     2  100    40      2     46 --:--:-- --:--:-- --:--:--    46
+ok[workspace] $ /bin/bash /tmp/jenkins4255442158139392751.sh
+Hello web-app
+[workspace] $ /bin/bash /tmp/jenkins6954074113386042485.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    42    0     2  100    40      4     87 --:--:-- --:--:-- --:--:--    87
+okFinished: SUCCESS
