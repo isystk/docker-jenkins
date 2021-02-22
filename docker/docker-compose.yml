@@ -12,6 +12,7 @@ services:
     volumes:
       - ./jenkins/jobs:/var/jenkins_home/jobs:rw
       - ./jenkins/secrets:/var/jenkins_home/secrets:rw
+    hostname: "jenkins"
     networks:
       app_net:
         ipv4_address: 172.30.0.11
@@ -29,6 +30,7 @@ services:
       - ./mysql/conf.d:/etc/mysql/conf.d
       - ./mysql/data:/var/lib/mysql
       - ./mysql/logs:/var/log/mysql
+    hostname: "db"
     networks:
       app_net:
         ipv4_address: 172.30.0.12
@@ -43,6 +45,7 @@ services:
     stdin_open: true
     privileged: true
     command: /sbin/init
+    hostname: "web-app"
     networks:
       app_net:
         ipv4_address: 172.30.0.13

@@ -8,11 +8,8 @@ ENV LANG="ja_JP UTF-8" \
     LC_ALL="ja_JP.UTF-8" \
     TZ="Asia/Tokyo"
 
-WORKDIR /usr/local/src/
-
 # よく使うもの
-RUN yum groupinstall -y -q "Development Tools" && yum clean all
-RUN yum install -y gmp-devel mpfr-devel ncurses-devel which wget zlib-devel sudo zsh vim
+RUN yum install -y sudo hostname
 
 # MySQL client
 RUN yum -y localinstall https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm

@@ -34,8 +34,9 @@ case ${1} in
     init)
         # 停止＆削除（コンテナ・イメージ・ボリューム）
         ${DOCKER_COMPOSE} down --rmi all --volumes
-        rm -Rf ./mysql/data/*
-        rm -Rf ./mysql/logs/*
+        rm -Rf docker/jenkins/secrets/*
+        rm -Rf docker/mysql/data/*
+        rm -Rf docker/mysql/logs/*
     ;;
 
     start)
@@ -74,7 +75,7 @@ case ${1} in
     web-app)
       case ${2} in
           login)
-              $DOCKER_COMPOSE exec --user isystk -w /home/isystk web-app /bin/zsh
+              $DOCKER_COMPOSE exec --user isystk -w /home/isystk web-app /bin/bash
           ;;
           *)
               usage
