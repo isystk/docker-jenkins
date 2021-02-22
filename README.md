@@ -1,13 +1,12 @@
-Dockerを利用したJenkins サンプル
-====
+# Docker を利用した Jenkins サンプル
 
 ## Description
 
-Jenkins のDocker環境構築サンプルです。
+Jenkins の Docker 環境構築サンプルです。
 
 ## Demo
 
-## VS. 
+## VS.
 
 ## Requirement
 
@@ -16,8 +15,22 @@ Jenkins のDocker環境構築サンプルです。
 ## Install
 
 ```
+# すべてのコンテナを起動する
 $ ./dc.sh start
-$ open http://localhost:18080/
+
+# web-appにログインする
+$ ./dc.sh web-app login
+
+# web-appからDBにログインする
+musql -h 172.30.0.12 -u root -ppassword
+
+# jenkinsを表示する
+$ open http://localhost:8080/
+
+# jenkinsの初期パスワードを確認する
+$ ./dc.sh jenkins login
+cat /var/jenkins_home/secrets/initialAdminPassword
+
 ```
 
 ## Contribution
@@ -29,5 +42,3 @@ $ open http://localhost:18080/
 ## Author
 
 [isystk](https://github.com/isystk)
-
-

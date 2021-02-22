@@ -4,5 +4,9 @@
 !.gitkeep
 
 # jenkins
-jenkins/secrets
+docker/jenkins/secrets
+
+# mysql
+docker/mysql/data
+docker/mysql/logs
 
