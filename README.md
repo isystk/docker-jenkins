@@ -18,11 +18,14 @@ Jenkins の Docker 環境構築サンプルです。
 # すべてのコンテナを起動する
 $ ./dc.sh start
 
-# web-appにログインする
-$ ./dc.sh web-app login
+# jenkinsにSSHログインする
+$ ./dc.sh jenkins login
+
+# jenkinsからweb-appにSSHログインする
+ssh isystk@web-app
 
 # web-appからDBにログインする
-musql -h 172.30.0.12 -u root -ppassword
+mysql -h 172.30.0.12 -u root -ppassword
 
 # jenkinsを表示する
 $ open http://localhost:8080/
