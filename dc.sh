@@ -15,8 +15,10 @@ Options:
   init                     Dockerコンテナ・イメージ・生成ファイルの状態を初期化します。
   start                    すべてのDaemonを起動します。
   stop                     すべてのDaemonを停止します。
+  jenkins login            jenkinsのコンテナ内にログインします。
   mysql login              MySQLデータベースにログインします。
   mysql export             MySQLデータベースのdumpファイルをエクスポートします。
+  web-app login            web-appのコンテナ内にログインします。
   --version, -v     バージョンを表示します。
   --help, -h        ヘルプを表示します。
 EOF

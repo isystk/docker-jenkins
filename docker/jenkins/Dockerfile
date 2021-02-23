@@ -1,6 +1,9 @@
-FROM jenkins/jenkins:2.204.2
+FROM jenkins/jenkins:jdk11
 
 MAINTAINER isystk
+
+# タイムゾーンを東京に設定
+ENV TZ "Asia/Tokyo"
 
 # install via apt
 USER root
