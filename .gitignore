@@ -5,6 +5,7 @@
 
 # jenkins
 docker/jenkins/secrets
+docker/jenkins/jobs/*/builds/*
 
 # mysql
 docker/mysql/data

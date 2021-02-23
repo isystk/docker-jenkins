@@ -1,5 +1,6 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
+  <actions/>
   <description>リモートにSSH接続して入力したコマンドを実行します。&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
@@ -15,7 +16,7 @@
         <hudson.model.TextParameterDefinition>
           <name>COMMAND</name>
           <description></description>
-          <defaultValue>echo &quot;Hello `hostname`&quot;</defaultValue>
+          <defaultValue>mysql -h 172.30.0.12 -u root -ppassword -e &quot;show databases&quot;</defaultValue>
           <trim>false</trim>
         </hudson.model.TextParameterDefinition>
       </parameterDefinitions>
@@ -43,11 +44,14 @@
 # 入力コマンドが空の場合は終了
 if [ -z &quot;$COMMAND&quot; ]; then exit 0; fi
 
+echo &quot;実行環境： `hostname`&quot;
+
+echo ${COMMAND}
 
 # slack通知
 curl -X POST \
 -H &quot;Content-type: application/json&quot; --data &quot;{\&quot;text\&quot;:\&quot;${SERVER} バッチ実行開始\&quot;}&quot; \
-https://hooks.slack.com/services/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</command>
+https://hooks.slack.com/services/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</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
@@ -69,8 +73,8 @@ EOF
 
 # slack通知
 curl -X POST \
--H &quot;Content-type: application/json&quot; --data &quot;{\&quot;text\&quot;:\&quot;${SERVER} バッチ完了開始\&quot;}&quot; \
-https://hooks.slack.com/services/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</command>
+-H &quot;Content-type: application/json&quot; --data &quot;{\&quot;text\&quot;:\&quot;${SERVER} バッチ実行完了\&quot;}&quot; \
+https://hooks.slack.com/services/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</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
