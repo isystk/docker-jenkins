@@ -12,8 +12,6 @@ Jenkins の Docker 環境構築サンプルです。
 
 ## Usage
 
-## Install
-
 ```
 # すべてのコンテナを起動する
 $ ./dc.sh start
@@ -35,6 +33,11 @@ $ ./dc.sh jenkins login
 cat /var/jenkins_home/secrets/initialAdminPassword
 
 ```
+
+## Install
+
+Jenkins で OpenJDK11 をインストール
+https://qiita.com/boushi-bird@github/items/49627b6a355ea2dfa57a
 
 ## Contribution
 
